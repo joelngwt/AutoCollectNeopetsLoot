@@ -17,8 +17,6 @@
 // @include      http://www.neopets.com/freebies/index.phtml
 // ==/UserScript==
 
-var date = new Date().getDate();
-
 if (window.location.href === "http://www.neopets.com/") {
     visitTombola();
 } else if (window.location.href === "http://www.neopets.com/island/tombola2.phtml") {
@@ -35,7 +33,7 @@ if (window.location.href === "http://www.neopets.com/") {
     visitGrundo();
 } else if (window.location.href === "http://www.neopets.com/faerieland/tdmbgpop.phtml") {
     visitSlorg();
-} else if (date === 2 && window.location.href === "http://www.neopets.com/shop_of_offers.phtml?slorg_payout=yes") {
+} else if (window.location.href === "http://www.neopets.com/shop_of_offers.phtml?slorg_payout=yes") {
     monthlyFreebies();
 } else {
     visitInventory();
