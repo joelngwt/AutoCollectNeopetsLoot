@@ -14,7 +14,6 @@ The script runs from the beginning once you visit http://www.neopets.com. Login 
 - Tombola
 - Coltzan's Shrine
 - Healing Springs
-- Fruit Machine
 - Ye Olde Fishing Vortex
 - The Discarded Magical Blue Grundo Plushie of Prosperity
 - Shop Of Offers (Slorg)
