@@ -26,8 +26,6 @@ if (window.location.href === "http://www.neopets.com/") {
 } else if (window.location.href === "http://www.neopets.com/desert/shrine.phtml") {
     visitBank();
 } else if (window.location.href === "http://www.neopets.com/process_bank.phtml" || window.location.href === "http://www.neopets.com/bank.phtml") {
-    visitFruitMachine();
-} else if (window.location.href === "http://www.neopets.com/desert/fruit/index.phtml" || window.location.href === "http://www.neopets.com/desert/fruitmachine.phtml") {
     visitFishing();
 } else if (window.location.href === "http://www.neopets.com/water/fishing.phtml") {
     visitGrundo();
