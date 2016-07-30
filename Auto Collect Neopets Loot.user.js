@@ -9,8 +9,6 @@
 // @include      http://www.neopets.com/faerieland/springs.phtml
 // @include      http://www.neopets.com/bank.phtml
 // @include      http://www.neopets.com/process_bank.phtml
-// @include      http://www.neopets.com/desert/fruit/index.phtml
-// @include      http://www.neopets.com/desert/fruitmachine.phtml
 // @include      http://www.neopets.com/water/fishing.phtml
 // @include      http://www.neopets.com/faerieland/tdmbgpop.phtml
 // @include      http://www.neopets.com/shop_of_offers.phtml?slorg_payout=yes
