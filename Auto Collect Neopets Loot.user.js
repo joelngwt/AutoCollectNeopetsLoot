@@ -3,7 +3,7 @@
 // @version      1.1
 // @description  Collects bank interest, Coltzan's Shrine, Healing Springs, Tombola, fishing, and Fruit Machine when www.neopets.com is loaded
 // @author       bloodelves88
-// @match        http://www.neopets.com/
+// @match        http://www.neopets.com/*
 // @include      http://www.neopets.com/desert/shrine.phtml
 // @include      http://www.neopets.com/island/tombola2.phtml
 // @include      http://www.neopets.com/faerieland/springs.phtml
@@ -13,26 +13,95 @@
 // @include      http://www.neopets.com/faerieland/tdmbgpop.phtml
 // @include      http://www.neopets.com/shop_of_offers.phtml?slorg_payout=yes
 // @include      http://www.neopets.com/freebies/index.phtml
+// @grant        GM_addStyle
 // ==/UserScript==
 
-if (window.location.href === "http://www.neopets.com/") {
-    visitTombola();
-} else if (window.location.href === "http://www.neopets.com/island/tombola2.phtml") {
-    visitHealingSprings();
-} else if (window.location.href === "http://www.neopets.com/faerieland/springs.phtml") {
-    visitColtzan();
-} else if (window.location.href === "http://www.neopets.com/desert/shrine.phtml") {
-    visitBank();
-} else if (window.location.href === "http://www.neopets.com/process_bank.phtml" || window.location.href === "http://www.neopets.com/bank.phtml") {
-    visitFishing();
-} else if (window.location.href === "http://www.neopets.com/water/fishing.phtml") {
-    visitGrundo();
-} else if (window.location.href === "http://www.neopets.com/faerieland/tdmbgpop.phtml") {
-    visitSlorg();
-} else if (window.location.href === "http://www.neopets.com/shop_of_offers.phtml?slorg_payout=yes") {
-    monthlyFreebies();
-} else {
-    visitInventory();
+// Gets data on whether script is on or off. Returns true if no data exists
+var scriptIsOn = window.localStorage.getItem("scriptIsOnValue");
+if (scriptIsOn === "false") {
+    scriptIsOn = false;
+} else { // This means also defaults to true if no data
+    scriptIsOn = true;
+}
+
+// Create button
+var onOffButton = document.createElement ('div');
+displayCorrectButtonText(onOffButton);
+onOffButton.setAttribute ('id', 'onOffButtonContainer');
+document.body.appendChild (onOffButton);
+
+document.getElementById ("onOffButton").addEventListener (
+    "click", onOffToggle, false
+);
+
+// Called by event listener
+function onOffToggle(event) {
+    scriptIsOn = !scriptIsOn;
+    window.localStorage.setItem("scriptIsOnValue", scriptIsOn); // Saves value of scriptIsOn
+    var onOffButton = document.getElementById("onOffButton");
+    displayCorrectButtonText(onOffButton);
+}
+
+function displayCorrectButtonText(buttonName) {
+    if (scriptIsOn === "true" || scriptIsOn === true) {
+        buttonName.innerHTML = '<button id="onOffButton" type="button">Turn off script</button>';
+    } else if (scriptIsOn === "false" || scriptIsOn === false) {
+        buttonName.innerHTML = '<button id="onOffButton" type="button">Turn on script</button>';
+    }
+}
+
+//--- Style our newly added elements using CSS.
+GM_addStyle ( multilineStr ( function () {/*!
+    #onOffButtonContainer {
+        position:               absolute;
+        top:                    0;
+        right:                  1%;
+        font-size:              20px;
+        background:             orange;
+        border:                 3px outset black;
+        margin:                 5px;
+        opacity:                0.9;
+        z-index:                222;
+        padding:                5px 20px;
+    }
+    #onOffButton {
+        cursor:                 pointer;
+    }
+    #onOffButtonContainer p {
+        color:                  red;
+        background:             white;
+    }
+*/} ) );
+
+function multilineStr (dummyFunc) {
+    var str = dummyFunc.toString ();
+    str     = str.replace (/^[^\/]+\/\*!?/, '') // Strip function () { /*!
+        .replace (/\s*\*\/\s*\}\s*$/, '')   // Strip */ }
+        .replace (/\/\/.+$/gm, '') // Double-slash comments wreck CSS. Strip them.
+    ;
+    return str;
+}
+
+if (scriptIsOn) {
+    if (window.location.href === "http://www.neopets.com/") {
+        visitTombola();
+    } else if (window.location.href === "http://www.neopets.com/island/tombola2.phtml") {
+        visitHealingSprings();
+    } else if (window.location.href === "http://www.neopets.com/faerieland/springs.phtml") {
+        visitColtzan();
+    } else if (window.location.href === "http://www.neopets.com/desert/shrine.phtml") {
+        visitBank();
+    } else if (window.location.href === "http://www.neopets.com/process_bank.phtml" || window.location.href === "http://www.neopets.com/bank.phtml") {
+        visitFishing();
+    } else if (window.location.href === "http://www.neopets.com/water/fishing.phtml") {
+        visitGrundo();
+    } else if (window.location.href === "http://www.neopets.com/faerieland/tdmbgpop.phtml") {
+        visitSlorg();
+    } else if (window.location.href === "http://www.neopets.com/shop_of_offers.phtml?slorg_payout=yes") {
+        monthlyFreebies();
+    } else if (window.location.href === "http://www.neopets.com/freebies/index.phtml") {
+        visitInventory();
+    }
 }
 
 // Copied from http://stackoverflow.com/a/134033/2098597
