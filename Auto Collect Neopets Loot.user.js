@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name         Auto Collect Neopets Loot
-// @version      1.1
-// @description  Collects bank interest, Coltzan's Shrine, Healing Springs, Tombola, fishing, and Fruit Machine when www.neopets.com is loaded
+// @version      1.2
+// @description  Collects bank interest, Coltzan's Shrine, Healing Springs, Tombola, fishing,
+//               Advent Calendar, and Fruit Machine when www.neopets.com is loaded
 // @author       bloodelves88
 // @match        http://www.neopets.com/*
 // @include      http://www.neopets.com/desert/shrine.phtml
@@ -13,6 +14,7 @@
 // @include      http://www.neopets.com/faerieland/tdmbgpop.phtml
 // @include      http://www.neopets.com/shop_of_offers.phtml?slorg_payout=yes
 // @include      http://www.neopets.com/freebies/index.phtml
+// @include      http://www.neopets.com/winter/process_adventcalendar.phtml
 // @grant        GM_addStyle
 // ==/UserScript==
 
@@ -23,6 +25,9 @@ if (scriptIsOn === "false") {
 } else { // This means also defaults to true if no data
     scriptIsOn = true;
 }
+
+// Get the current month (for Advent Calendar)
+var thisMonth = new Date().getMonth(); // January is 0, December is 11
 
 // Create button
 var onOffButton = document.createElement ('div');
@@ -91,7 +96,8 @@ if (scriptIsOn) {
         visitColtzan();
     } else if (window.location.href === "http://www.neopets.com/desert/shrine.phtml") {
         visitBank();
-    } else if (window.location.href === "http://www.neopets.com/process_bank.phtml" || window.location.href === "http://www.neopets.com/bank.phtml") {
+    } else if (window.location.href === "http://www.neopets.com/process_bank.phtml" ||
+               window.location.href === "http://www.neopets.com/bank.phtml") {
         visitFishing();
     } else if (window.location.href === "http://www.neopets.com/water/fishing.phtml") {
         visitGrundo();
@@ -99,7 +105,10 @@ if (scriptIsOn) {
         visitSlorg();
     } else if (window.location.href === "http://www.neopets.com/shop_of_offers.phtml?slorg_payout=yes") {
         monthlyFreebies();
-    } else if (window.location.href === "http://www.neopets.com/freebies/index.phtml") {
+    } else if (thisMonth == 11 && window.location.href === "http://www.neopets.com/freebies/index.phtml") {
+        adventCalendar();
+    } else if (window.location.href === "http://www.neopets.com/shop_of_offers.phtml?slorg_payout=yes" ||
+               window.location.href === "http://www.neopets.com/winter/process_adventcalendar.phtml") {
         visitInventory();
     }
 }
@@ -146,6 +155,10 @@ function visitSlorg() {
 
 function monthlyFreebies() {
     window.location.href = "http://www.neopets.com/freebies/index.phtml";
+}
+
+function adventCalendar() {
+    window.location.href = "http://www.neopets.com/winter/process_adventcalendar.phtml";
 }
 
 function visitInventory() {
