@@ -7,7 +7,9 @@ Get addons to use userscripts: [Greasemonkey](https://addons.mozilla.org/en-US/f
 Then click: [Auto Collect Neopets Loot.user.js](https://github.com/bloodelves88/AutoCollectNeopetsLoot/raw/master/Auto%20Collect%20Neopets%20Loot.user.js)
 
 ## Using
-The script runs from the beginning once you visit http://www.neopets.com. Login if you haven't, then just load http://www.neopets.com. 
+The script runs from the beginning once you visit http://www.neopets.com. Log in if you haven't (disable the script from Greasemonkey/Tampermonkey to prevent the script from running so that you can log in), then just load http://www.neopets.com. 
+
+Note about on/off button: the button will not work while the script is running. Visit a page that's not the homepage or any of the pages below to turn the script on/off.
 
 ## What's collected
 - Bank interest
@@ -18,3 +20,4 @@ The script runs from the beginning once you visit http://www.neopets.com. Login 
 - The Discarded Magical Blue Grundo Plushie of Prosperity
 - Shop Of Offers (Slorg)
 - Freebies For You! (collectible only once a month)
+- Advent Calendar (script only visits this in December)
