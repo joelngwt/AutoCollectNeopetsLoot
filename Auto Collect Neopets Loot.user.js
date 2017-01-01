@@ -107,7 +107,7 @@ if (scriptIsOn) {
         monthlyFreebies();
     } else if (thisMonth == 11 && window.location.href === "http://www.neopets.com/freebies/index.phtml") {
         adventCalendar();
-    } else if (window.location.href === "http://www.neopets.com/shop_of_offers.phtml?slorg_payout=yes" ||
+    } else if (window.location.href === "http://www.neopets.com/freebies/index.phtml" ||
                window.location.href === "http://www.neopets.com/winter/process_adventcalendar.phtml") {
         visitInventory();
     }
