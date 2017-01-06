@@ -89,7 +89,7 @@ function multilineStr (dummyFunc) {
 }
 
 if (scriptIsOn) {
-    if (window.location.href === "http://www.neopets.com/ || 
+    if (window.location.href === "http://www.neopets.com/" || 
         window.location.href === "http://www.neopets.com/index.phtml") {
         visitTombola();
     } else if (window.location.href === "http://www.neopets.com/island/tombola2.phtml") {
