@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Auto Collect Neopets Loot
-// @version      1.3
+// @version      1.4
 // @description  Collects bank interest, Coltzan's Shrine, Healing Springs, Tombola, fishing,
 //               Advent Calendar, and Fruit Machine when www.neopets.com is loaded
 // @author       bloodelves88
 // @match        http://www.neopets.com/*
+// @include      http://www.neopets.com/index.phtml
 // @include      http://www.neopets.com/desert/shrine.phtml
 // @include      http://www.neopets.com/island/tombola2.phtml
 // @include      http://www.neopets.com/faerieland/springs.phtml
@@ -88,7 +89,8 @@ function multilineStr (dummyFunc) {
 }
 
 if (scriptIsOn) {
-    if (window.location.href === "http://www.neopets.com/") {
+    if (window.location.href === "http://www.neopets.com/ || 
+        window.location.href === "http://www.neopets.com/index.phtml") {
         visitTombola();
     } else if (window.location.href === "http://www.neopets.com/island/tombola2.phtml") {
         visitHealingSprings();
