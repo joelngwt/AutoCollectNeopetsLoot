@@ -60,7 +60,7 @@ function displayCorrectButtonText(buttonName) {
 GM_addStyle ( multilineStr ( function () {/*!
     #onOffButtonContainer {
         position:               absolute;
-        top:                    0;
+        top:                    2rem;
         right:                  1%;
         font-size:              20px;
         background:             orange;
