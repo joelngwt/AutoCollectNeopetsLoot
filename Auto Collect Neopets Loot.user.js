@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Auto Collect Neopets Loot
-// @version      1.4
+// @version      1.5
 // @description  Collects bank interest, Coltzan's Shrine, Healing Springs, Tombola, fishing,
 //               Advent Calendar, and Fruit Machine when www.neopets.com is loaded
 // @author       bloodelves88
